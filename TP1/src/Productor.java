@@ -1,6 +1,6 @@
 public class Productor extends Thread {
 
-    Buffer buffer;
+    private Buffer buffer;
 
     public Productor(Buffer b,String nombre) {
         super(nombre);
@@ -8,13 +8,10 @@ public class Productor extends Thread {
 
     }
 
-
-
-
     @Override
     public void run() {
-        for(int i=0;i<10;i++){
-            System.out.println(currentThread().getName()+" esta intentando poner");
+        for(int i=0;i<100;i++){
+
             buffer.poner(currentThread().getName());
 
             try{
