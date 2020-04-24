@@ -13,9 +13,16 @@ public class Main {
         for (int i = 0; i < cant; i++) {
             productores[i] = new Productor(buffer, "productor" + i);
             consumidores[i] = new Consumidor(buffer, "consumidor" + i);
+        }
+
+        LogCreator logCreator = new LogCreator(buffer, consumidores);
+        logCreator.start();
+
+        for (int i = 0; i < cant; i++) {
             productores[i].start();
             consumidores[i].start();
         }
+
 
         for (int i = 0; i < cant; i++) {
             try{
@@ -26,11 +33,11 @@ public class Main {
             }
         }
 
+        logCreator.interrupt();
+
         long tFinal =  System.currentTimeMillis();
 
-        System.out.println("Productos descartados: " + buffer.getDescartados());
-        System.out.println("Productos totales colocados: " + buffer.getColocados());
-        System.out.println("Productos totales consumidos: " + buffer.getConsumidos());
+
         System.out.println("Tiempo transcurrido: " + (tFinal-tInicio)/1000 + " segundos");
 
 
