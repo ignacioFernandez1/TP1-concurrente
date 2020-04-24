@@ -14,7 +14,7 @@ public class Consumidor extends Thread {
     public void run() {
         for(int i=0;i<100;i++){
 
-            buffer.sacar(currentThread().getName());
+            buffer.sacar();
 
             try{
                 sleep((long) (Math.random()*100));
