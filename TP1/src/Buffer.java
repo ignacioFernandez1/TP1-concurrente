@@ -1,16 +1,20 @@
 
 public class Buffer {
 
-    public int cantidad;
+    private int cantidad;
+    private int descartados;
+    private int colocados;
+    private int consumidos;
     private boolean disponible;
     private boolean lleno;
-    public int descartados;
 
     public Buffer() {
         cantidad=0;
+        descartados=0;
+        colocados=0;
+        consumidos=0;
         disponible=false;
         lleno=false;
-        descartados=0;
     }
 
     public synchronized void poner(){
@@ -18,6 +22,7 @@ public class Buffer {
         // Si el buffer esta lleno el producto se descarta
         if(!lleno) {
             cantidad++;
+            colocados++;
             System.out.println("poniendo " +Thread.currentThread().getName()+ ": Cantidad es igual a "+cantidad);
 
             disponible=true;
@@ -37,6 +42,7 @@ public class Buffer {
         System.out.println(Thread.currentThread().getName()+" esta intentando sacar");
         if(disponible) {
             cantidad--;
+            consumidos++;
             lleno = false;
             System.out.println("sacando " + Thread.currentThread().getName() + ": Cantidad es igual a " + cantidad);
             if (cantidad == 0) {
@@ -49,7 +55,9 @@ public class Buffer {
         }
     }
 
-
+    public int getDescartados(){return descartados;}
+    public int getColocados(){return colocados;}
+    public int getConsumidos(){return consumidos;}
 
 
     }

@@ -15,7 +15,7 @@ public class Productor extends Thread {
             buffer.poner();
 
             try{
-                sleep((long) (Math.random()*100));
+                sleep((long) (Math.random()*1500));
             }catch (InterruptedException e) {
                 e.printStackTrace();
             }

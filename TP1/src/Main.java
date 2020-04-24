@@ -8,6 +8,8 @@ public class Main {
         Productor[] productores = new Productor[cant];
         Consumidor[] consumidores = new Consumidor[cant];
 
+        long tInicio =  System.currentTimeMillis();
+
         for (int i = 0; i < cant; i++) {
             productores[i] = new Productor(buffer, "productor" + i);
             consumidores[i] = new Consumidor(buffer, "consumidor" + i);
@@ -24,12 +26,15 @@ public class Main {
             }
         }
 
-        System.out.println("Productos descartados: " + buffer.descartados);
+        long tFinal =  System.currentTimeMillis();
+
+        System.out.println("Productos descartados: " + buffer.getDescartados());
+        System.out.println("Productos totales colocados: " + buffer.getColocados());
+        System.out.println("Productos totales consumidos: " + buffer.getConsumidos());
+        System.out.println("Tiempo transcurrido: " + (tFinal-tInicio)/1000 + " segundos");
 
 
-        for (int i = 0; i < cant; i++) {
-            System.out.println("Consumidor " + i + ": " + consumidores[i].getState());
-        }
+
     }
 
 }
