@@ -12,7 +12,7 @@ public class Productor extends Thread {
     public void run() {
         for(int i=0;i<100;i++){
 
-            buffer.poner(currentThread().getName());
+            buffer.poner();
 
             try{
                 sleep((long) (Math.random()*100));
