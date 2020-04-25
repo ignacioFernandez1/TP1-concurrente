@@ -33,7 +33,7 @@ public class Buffer {
         }
     }
 
-    public synchronized void sacar(){
+    public synchronized boolean sacar(){
         if(disponible) {
             cantidad--;
             consumidos++;
@@ -41,6 +41,10 @@ public class Buffer {
             if (cantidad == 0) {
                 disponible = false;
             }
+            return true;
+        }
+        else{
+            return false;
         }
     }
 
@@ -48,6 +52,4 @@ public class Buffer {
     public int getColocados(){return colocados;}
     public int getConsumidos(){return consumidos;}
     public int getCantidad(){return cantidad;}
-
-
     }

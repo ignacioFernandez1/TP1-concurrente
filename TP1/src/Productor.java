@@ -12,16 +12,15 @@ public class Productor extends Thread {
     public void run() {
         for(int i=0;i<100;i++){
 
-            buffer.poner();
-
             try{
                 sleep((long) (Math.random()*1500));
             }catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-        }
+            buffer.poner();
 
+        }
 
     }
 }
