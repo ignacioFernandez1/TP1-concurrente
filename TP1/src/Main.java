@@ -39,6 +39,13 @@ public class Main {
 
 
         System.out.println("Tiempo transcurrido: " + (tFinal-tInicio)/1000 + " segundos");
+        System.out.println("Productos Colocados: " + buffer.getColocados());
+        System.out.println("Productos Consumidos: " + buffer.getConsumidos());
+        System.out.println("Productos Descartados: " + buffer.getDescartados());
+
+
+
+
 
 
 
