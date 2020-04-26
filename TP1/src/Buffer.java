@@ -51,5 +51,5 @@ public class Buffer {
     public int getDescartados(){return descartados;}
     public int getColocados(){return colocados;}
     public int getConsumidos(){return consumidos;}
-    public int getCantidad(){return cantidad;}
+    public synchronized int getCantidad(){return cantidad;}
     }
